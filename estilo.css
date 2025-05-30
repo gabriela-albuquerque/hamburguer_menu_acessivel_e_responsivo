@@ -21,12 +21,31 @@ main {
   background-color: #444;
 }
 
+.hamburguer-button .icon {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+}
+
 .hamburguer-button[aria-expanded="false"] .icon::before {
-  content: "\2730";
+  content: "\2630";
 }
 
 .hamburguer-button[aria-expanded="true"] .icon::before {
   content: "\2715";
+}
+
+.hamburguer-button-js-enabled + .menu {
+  display: flex;
+  position: absolute;
+  width: calc(100% - 30px);
+  left: 15px;
+  top: 60px;
+  flex-direction: column;
+}
+
+.hamburguer-button-js-enabled + .menu-closed {
+  display: none;
 }
 
 .menu li a {
@@ -49,6 +68,10 @@ main {
   font-size: 24px;
   padding: 14px;
   cursor: pointer;
+}
+
+.hamburguer-button-js-enabled {
+  display: block;
 }
 
 @media (min-width: 768px) {
