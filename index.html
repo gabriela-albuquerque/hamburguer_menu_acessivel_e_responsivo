@@ -4,14 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hamburguer Menu</title>
+    <link rel="stylesheet" href="estilo.css" />
   </head>
   <body>
     <nav class="nav-menu">
-      <button id="hamburguer-button" class="hamburguer-button">
+      <button
+        id="hamburguer-button"
+        class="hamburguer-button"
+        aria-label="Menu Principal"
+        aria-controls="menu"
+        aria-expanded="true"
+      >
         <span class="icon"></span>Menu
       </button>
 
-      <ul id="menu" class="menu">
+      <ul id="menu" class="menu" aria-hidden="true">
         <li><a href="#home">Início</a></li>
         <li><a href="#services">Serviços</a></li>
         <li><a href="#about">Sobre</a></li>
