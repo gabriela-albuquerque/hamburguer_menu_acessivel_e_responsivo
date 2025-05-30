@@ -32,3 +32,18 @@ btnMenu.addEventListener("click", function () {
     }
   }, 1);
 });
+
+const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+function handleMediaQueryChange(e) {
+  if (e.matches) {
+    menu.setAttribute("aria-hidden", "false");
+    btnMenu.setAttribute("aria-expanded", "true");
+    menu.classList.remove("menu-closed");
+  } else {
+    closeMenu();
+  }
+}
+
+mediaQuery.addEventListener("change", handleMediaQueryChange);
+handleMediaQueryChange(mediaQuery);

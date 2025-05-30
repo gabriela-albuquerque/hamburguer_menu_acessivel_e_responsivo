@@ -79,7 +79,8 @@ main {
     display: none;
   }
 
-  .menu {
+  .hamburguer-button-js-enabled + .menu {
+    position: static;
     display: flex;
     flex-direction: row;
     width: auto;
