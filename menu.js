@@ -9,9 +9,15 @@ function closeMenu() {
   menu.classList.add("menu-closed");
 }
 
+function openMenu() {
+  menu.setAttribute("aria-hidden", "false");
+  btnMenu.setAttribute("aria-expanded", "true");
+  menu.classList.remove("menu-closed");
+}
+
 closeMenu();
 
-btnMenu.addEventListener("click", function () {
+function toggleMenu() {
   //   expanded.stopPropagation();
   let expanded = this.getAttribute("aria-expanded") === "true" ? true : false;
 
@@ -21,25 +27,20 @@ btnMenu.addEventListener("click", function () {
     menu.classList.add("menu-closed");
   } else {
     menu.classList.remove("menu-closed");
+    setTimeout(() => document.addEventListener("click", closeMenu), 1);
   }
 
   this.setAttribute("aria-expanded", !expanded);
   menu.setAttribute("aria-hidden", expanded);
+}
 
-  setTimeout(function () {
-    if (!expanded) {
-      document.addEventListener("click", closeMenu);
-    }
-  }, 1);
-});
+btnMenu.addEventListener("click", toggleMenu);
 
 const mediaQuery = window.matchMedia("(min-width: 768px)");
 
 function handleMediaQueryChange(e) {
   if (e.matches) {
-    menu.setAttribute("aria-hidden", "false");
-    btnMenu.setAttribute("aria-expanded", "true");
-    menu.classList.remove("menu-closed");
+    openMenu();
   } else {
     closeMenu();
   }
